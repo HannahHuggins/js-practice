@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'newFont';
+    src: url("LemonMilk.02aefe4d.otf");
+}
+
+body {
+    background-color: #F8DA59;
+}
+
+.nav-bar {
+    text-align: center;
+}
+h1{
+    font-family: 'newFont';
+    text-align: center;
+    color: #2A2A2A;
+    font-size: 50px;
+}
+.js {
+    height: 50%;
+    width: 50%;
+}
