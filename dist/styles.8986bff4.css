@@ -26,8 +26,9 @@ body {
 }
 
 .nav-bar a:hover{
-    background-color: #AA9847;
+    background-color: #887A40;
     padding: 10px;
+    color: #F8DA59;
 }
 
 .home {
@@ -43,4 +44,11 @@ h1{
 .js {
     height: 50%;
     width: 50%;
+    float: left;
+}
+
+.ooj {
+    height: 30%;
+    width: 30%;
+    float: left;
 }
