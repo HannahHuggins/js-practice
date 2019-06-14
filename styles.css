@@ -22,7 +22,16 @@ body {
 .nav-bar a {
     text-decoration: none;
     color: #2A2A2A;
-    padding-right: 50px;
+    padding: 10px;
+}
+
+.nav-bar a:hover{
+    background-color: #AA9847;
+    padding: 10px;
+}
+
+.home {
+    font-family: 'newFont';
 }
 
 h1{

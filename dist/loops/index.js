@@ -104,56 +104,74 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({"DOM/app.js":[function(require,module,exports) {
-var toggleList = document.getElementById('toggleList');
-var listDiv = document.querySelector('.list');
-var descriptionInput = document.querySelector('input.description');
-var descriptionP = document.querySelector('p.description');
-var descriptionButton = document.querySelector('button.description');
-var listUl = listDiv.querySelector('ul');
-var addItemInput = document.querySelector('input.addItemInput');
-var addItemButton = document.querySelector('button.addItemButton');
-var listItems = document.getElementsByTagName('li');
-listUl.addEventListener('click', function (event) {
-  if (event.target.tagName == 'BUTTON') {
-    if (event.target.className == 'remove') {
-      var li = event.target.parentNode;
-      var ul = li.parentNode;
-      ul.removeChild(li);
+})({"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
     }
+  }
 
-    if (event.target.className == 'up') {
-      var _li = event.target.parentNode;
-      var prevLi = _li.previousElementSibling;
-      var _ul = _li.parentNode;
+  return '/';
+}
 
-      if (prevLi) {
-        _ul.insertBefore(_li, prevLi);
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
       }
     }
-  }
-});
-toggleList.addEventListener('click', function () {
-  if (listDiv.style.display == 'none') {
-    toggleList.textContent = 'Hide list';
-    listDiv.style.display = 'block';
-  } else {
-    toggleList.textContent = 'Show list';
-    listDiv.style.display = 'none';
-  }
-});
-descriptionButton.addEventListener('click', function () {
-  descriptionP.innerHTML = descriptionInput.value + ':';
-  descriptionInput.value = '';
-});
-addItemButton.addEventListener('click', function () {
-  var ul = document.getElementsByTagName('ul')[0];
-  var li = document.createElement('li');
-  li.textContent = addItemInput.value;
-  ul.appendChild(li);
-  addItemInput.value = '';
-});
-},{}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -322,5 +340,4 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},["../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","DOM/app.js"], null)
-//# sourceMappingURL=/app.7303869e.map
+},{}]},{},["../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
