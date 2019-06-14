@@ -3,13 +3,28 @@
     src: url("LemonMilk.02aefe4d.otf");
 }
 
+@font-face {
+    font-family: 'newFontLight';
+    src: url("LemonMilklight.6b0f7615.otf");
+}
+
 body {
     background-color: #F8DA59;
 }
 
 .nav-bar {
     text-align: center;
+    font-family: 'newFontLight';
+    background-color: #D6BD51;
+    padding: 10px;
 }
+
+.nav-bar a {
+    text-decoration: none;
+    color: #2A2A2A;
+    padding-right: 50px;
+}
+
 h1{
     font-family: 'newFont';
     text-align: center;
